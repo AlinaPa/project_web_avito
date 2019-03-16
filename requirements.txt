@@ -1,1 +1,4 @@
+beautifulsoup4
+requests
+django-model-utils
 django>=2.1.6
