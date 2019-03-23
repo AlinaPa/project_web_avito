@@ -5,5 +5,5 @@ from products.models import Products
 
 @register(Products)
 class ProdactsAdmin(admin.ModelAdmin):
-    list_display = ('number', 'name', 'price', 'phone_number', )
+    list_display = ('title', )
 

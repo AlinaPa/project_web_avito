@@ -1,3 +1,4 @@
+import datetime
 import requests
 from bs4 import BeautifulSoup
 
@@ -15,6 +16,11 @@ def get_html(url):
 		return False
 
 
+def save_products(title, url, price, metro):
+	new_product = Products(title=title, url=url, price=price, metro=metro, created_at=datetime.datetime.now())
+	new_product.save()
+
+
 def get_avito_ads():
 	html = get_html("https://www.avito.ru/moskva/odezhda_obuv_aksessuary/zhenskaya_odezhda/obuv")
 	if html:
@@ -30,7 +36,6 @@ def get_avito_ads():
 			save_products(title, url, price, metro)
 
 
-def save_products(title, url, price, metro):
-	new_product = Products(title=title, url=url, price=price, metro=metro)
-	new_product.save()
-
+''' Парсим moskva/odezhda_obuv_aksessuary/zhenskaya_odezhda/obuv и записываем данные в базу '''
+def __main__():
+	get_avito_ads()
