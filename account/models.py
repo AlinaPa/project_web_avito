@@ -2,8 +2,6 @@ from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.validators import UnicodeUsernameValidator
 from django.utils.translation import gettext_lazy as _
 from django.db import models
-from django_fsm import FSMField
-from model_utils import Choices
 
 
 class User(AbstractUser):
@@ -33,14 +31,5 @@ class User(AbstractUser):
         pass
 
 
-class Profile(models.Model):
-    VIEW = Choices(
-        ('PRIVATE_PERSON', 'Частное лицо'),
-        ('LEGAL_PERSON', 'Юридическое лицо'),
-        ('REALTOR', 'Риэлтор'),
-    )
-
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
-    view = FSMField(_('Вид профиля'), choices=VIEW, protected=True)
 
 

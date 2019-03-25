@@ -39,13 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # base apps
-    'profile',
+    'account',
     'products',
 
 
 ]
 
-AUTH_USER_MODEL = 'profile.User'
+AUTH_USER_MODEL = 'account.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -59,10 +59,16 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'avito.urls'
 
+AVITO_TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates/')
+
+BASE_TEMPLATES_DIRS = (
+    AVITO_TEMPLATES_DIR,
+)
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': BASE_TEMPLATES_DIRS,
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -126,3 +132,21 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# SWAGGER_SETTINGS = {
+#     'LOGIN_URL': 'rest_framework:login',
+#     'LOGOUT_URL': 'rest_framework:logout',
+#     'SECURITY_DEFINITIONS': {
+#         'api_key': {
+#             'type': 'apiKey',
+#             'name': 'Authorization',
+#             'in': 'header',
+#         }
+#     },
+#     'JSON_EDITOR': True,
+#     'SHOW_REQUEST_HEADERS': True,
+#     'OPERATIONS_SORTER': 'alpha',
+#     'DOC_EXPANSION': 'list',
+#     'APIS_SORTER': 'alpha',
+#     'VALIDATOR_URL': None,  # disable external js requests
+# }

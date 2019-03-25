@@ -36,6 +36,5 @@ def get_avito_ads():
 			save_products(title, url, price, metro)
 
 
-''' Парсим moskva/odezhda_obuv_aksessuary/zhenskaya_odezhda/obuv и записываем данные в базу '''
-def __main__():
-	get_avito_ads()
+get_avito_ads()
+
