@@ -19,23 +19,23 @@
         <div class="container has-text-centered">
             <div class="column is-4 is-offset-4">
                 <h3 class="title has-text-grey">Авторизация</h3>
-                <div class="box">
-                    <form>
+                <div class="row">
+                    <form action="" method="POST">
+                        {% csrf_token %}
                         <div class="field">
-                            <div class="control">
-                                <input class="input" type="email" placeholder="Ваша электронная почта" autofocus="">
-                            </div>
+                            <input type="email" placeholder="Ваша электронная почта"
+                                   value="{% if form.email.value %}{{ form.email.value }}{% endif %}"
+                                   class="input"/>
                         </div>
-
                         <div class="field">
-                            <div class="control">
-                                <input class="input" type="password" placeholder="Ваш пароль">
-                            </div>
+                            <input type="password" placeholder="Ваш пароль"
+                                   value="{% if form.password.value %}{{ form.password.value }}{% endif %}"
+                                   class="input"/>
                         </div>
                         <div class="field">
                             <a href="#">Забыли пароль?</a>
                         </div>
-                        <button class="button is-block is-info is-medium is-fullwidth">Войти</button>
+                        <button class="button is-block is-info is-medium is-fullwidth" type="submit" >Войти</button>
                     </form>
                 </div>
                 <p class="has-text-grey">

@@ -1,12 +1,8 @@
 from django.core.management import BaseCommand
 
-from avito_parser.parser_avito import save_products
+from avito_parser.parser_avito import get_avito_ads
 
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
-        save_products()
-
-
-
-
+        get_avito_ads()
