@@ -20,8 +20,8 @@
             <div class="column is-4 is-offset-4">
                 <h3 class="title has-text-grey">Авторизация</h3>
                 <div class="row">
-                    <form action="" method="POST">
-                        {% csrf_token %}
+                    <form action="{{ form.process_login }}" method="POST">{% csrf_token %}
+                        {% if next %}<input type="hidden" name="next" value="{{ next }}">{% endif %}
                         <div class="field">
                             <input type="email" placeholder="Ваша электронная почта"
                                    value="{% if form.email.value %}{{ form.email.value }}{% endif %}"
