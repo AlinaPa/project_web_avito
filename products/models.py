@@ -12,7 +12,7 @@ class Products(models.Model):
     phone_number = models.CharField(_('Телефон'), max_length=11, blank=False)
     created_at = models.DateField(_('Дата создания'), blank=False)
 
-    def __repr__(self):
+    def __str__(self):
         return f'<Products: {self.title} {self.url}>'
 
 

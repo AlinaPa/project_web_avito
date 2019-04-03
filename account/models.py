@@ -12,9 +12,6 @@ class User(AbstractUser):
     def __str__(self):
         return self.username or self.email
 
-    def __repr__(self):
-        return self.email
-
     def set_password(self, password):
         self.password = generate_password_hash(password)
 
