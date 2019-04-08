@@ -1,4 +1,30 @@
+# Distribution / packaging
 *.pyc
-.idea/
+.Python
+env/
+bin/
+develop-eggs/
+dist/
+eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Installer logs
+pip-log.txt
+
+# Django stuff:
 *.log
-*env/
+*.pot
+
+# Sphinx documentation
+db.sqlite3
+/media/
+/static/
+.idea
+.DS_Store
