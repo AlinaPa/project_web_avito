@@ -104,7 +104,6 @@
 
 {% block content %}
     <span>Одежда, обувь, аксессуары</span>
-    <div class="item item_table">
     {% if products_list %}
         <ul>
             {% for product in products_list %}
@@ -116,7 +115,6 @@
     {% else %}
         <p>There are no books borrowed.</p>
     {% endif %}
-    </div>>
 {% endblock %}
 
 <div class="jumbotron">
