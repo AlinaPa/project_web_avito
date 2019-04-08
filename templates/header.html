@@ -9,13 +9,21 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous"></script>
+
     <title>Avito</title>
 </head>
 <body class="os x chrome chrome-chrome ">
-<noscript>
-    <iframe src="//www.googletagmanager.com/ns.html?id=GTM-KP9Q9H" height="0" width="0"
-            style="display:none;visibility:hidden"></iframe>
-</noscript>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav navbar-expand-md mr-auto">
@@ -36,7 +44,7 @@
         </ul>
         <div class="nav justify-content-end">
             <div data-marker="header/favorites" class="nav-item">
-                <a href="/favorites" title="Избранное" class="nav-link">
+                <a href="/account/login" title="Избранное" class="nav-link">
                     <svg width="21" height="24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M10.918 5.085a5.256 5.256 0 0 1 7.524 0c2.077 2.114 2.077 5.541 0 7.655l-7.405 7.534a.75.75 0 0 1-1.074 0L2.558 12.74c-2.077-2.114-2.077-5.54 0-7.655a5.256 5.256 0 0 1 7.524 0c.15.152.289.312.418.479.13-.167.269-.327.418-.479z"
                               fill="#CCC" fill-rule="nonzero"></path>
@@ -94,26 +102,30 @@
     </div>
 </div>
 
+{% block content %}
+    <span>Одежда, обувь, аксессуары</span>
+    <div class="item item_table">
+    {% if products_list %}
+        <ul>
+            {% for product in products_list %}
+                <li><a href="{{ product.url }}">{{ product.title }}</a> - {{ product.price }}</li>
+            {% empty %}
+                <li>Не найдено объявлений в данной группе</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>There are no books borrowed.</p>
+    {% endif %}
+    </div>>
+{% endblock %}
 
 <div class="jumbotron">
     <div class="container">
-        <h1>Avito</h1>
         <p>
             <br>
-            <a href="/" class="btn btn-success btn-lg">Кнопка &raquo;</a>
+            <a href={{ product.url }} class="btn btn-success btn-lg"></a>
         </p>
     </div>
 </div>
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-        crossorigin="anonymous"></script>
 </body>
 </html>

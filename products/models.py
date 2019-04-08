@@ -1,5 +1,4 @@
 from django.db import models
-from django.utils.translation import gettext_lazy as _
 
 
 class Products(models.Model):
@@ -15,4 +14,6 @@ class Products(models.Model):
     def __repr__(self):
         return f'<Products: {self.title} {self.url}>'
 
-
+    class Meta:
+        verbose_name = 'Товар'
+        verbose_name_plural = 'Товар'

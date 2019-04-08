@@ -1,10 +1,14 @@
-from werkzeug.contrib.jsrouting import render_template
+from django.core.paginator import Paginator
+from django.views.generic import ListView
 
-from pars.avito_category_parser import get_products
+from products.models import Products
 
 
-def index():
-    title = "Название товара"
-    url = "Ссылка на товар"
-    product_list = get_products()
-    return render_template('index', page_title=title, url=url, product_list=product_list)
+class ProductListView(ListView):
+    model = Products
+    template_name = 'main_page/header.html'
+    paginate_by = 10
+    context_object_name = "products"
+
+    def get_queryset(self):
+        return Products.objects.all()
