@@ -12,9 +12,6 @@ class LoginView(FormView):
     template_name = 'account/login_form.html'
     success_url = "/"
 
-    def get_template_names(self):
-        return ['account/login_form.html'] if self.request.is_ajax() else [self.template_name]
-
     def form_valid(self, form):
         email_user = User.objects.filter(email__iexact=form.cleaned_data['email']).first()
         if email_user:

@@ -1,8 +1,8 @@
 from django.views.generic import ListView
 
+from products.models import Products
 
-class MainViews(ListView):
+
+class ProductListView(ListView):
+    model = Products
     template_name = 'main_page/header.html'
-
-    def get_template_names(self):
-        return ['main_page/header.html'] if self.request.is_ajax() else [self.template_name]
