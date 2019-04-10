@@ -25,13 +25,12 @@
                     {% endif %}
                     {% if next %}
                         {% if user.is_authenticated %}
-                            <p>Your account doesn't have access to this page. To proceed,
-                                please login with an account that has access.</p>
+                            <p>Ваша учетная запись не подтверждена. Подтвердите аккаунт на почте.</p>
                         {% else %}
-                            <p>Please login to see this page.</p>
+                            <p>Пожалуйста авторизуйтесь</p>
                         {% endif %}
                     {% endif %}
-                    <form action="/account/login" method="POST">
+                    <form action="/account/login/" method="POST">
                         {% csrf_token %}
                         {% if next %}<input type="hidden" name="next" value="{{ next }}">{% endif %}
                         <div class="field">
@@ -44,14 +43,14 @@
                                    class="input">
                         </div>
                         <div class="field">
-                            <a href="#">Забыли пароль?</a>
+                            <a href="/account/password_reset/">Забыли пароль?</a>
                         </div>
                         <button class="button is-block is-info is-medium is-fullwidth" type="submit">Войти</button>
                     </form>
                 </div>
                 <p class="has-text-grey">
-                    <a href="../">Зарегистрироваться</a>&nbsp;·&nbsp;
-                    <a href="../">Нужна помощь?</a>
+                    <a href="/account/registration/">Зарегистрироваться</a>&nbsp;·&nbsp;
+                    <a href="/feedback/">Нужна помощь?</a>
                 </p>
             </div>
         </div>
