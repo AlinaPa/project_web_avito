@@ -1,4 +1,3 @@
-from django.core.paginator import Paginator
 from django.views.generic import ListView
 
 from products.models import Products
