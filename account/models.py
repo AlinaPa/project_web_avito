@@ -4,8 +4,11 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 
 class User(AbstractUser):
-    first_name = models.CharField('Имя', max_length=255, blank=True)
-    last_name = models.CharField('Фамилия', max_length=255, blank=True)
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = []
+
+    email = models.EmailField('Электронная почта', blank=False, unique=True)
+    username = models.CharField('Имя пользователя', max_length=65,  blank=True)
 
     class Meta:
         verbose_name = 'Пользователь'
@@ -23,6 +26,3 @@ class User(AbstractUser):
     @property
     def is_admin(self):
         return self.is_staff or self.is_superuser
-
-
-
