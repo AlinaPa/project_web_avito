@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login
 
 from account.models import User
 
-from account.forms import LoginForm
+from account.forms import LoginForm, RegistrationForm
 
 
 class LoginView(FormView):
@@ -19,3 +19,13 @@ class LoginView(FormView):
             login(self.request, user)
             return super().form_valid(form)
         raise forms.ValidationError('Неверно указан email или пароль')
+
+
+class RegisterView(FormView):
+    form_class = RegistrationForm
+    template_name = "account/registration_form.html"
+    success_url = "/account/login/"
+
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)

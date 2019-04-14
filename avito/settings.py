@@ -6,6 +6,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+AUTH_USER_MODEL = 'account.User'
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -17,13 +18,10 @@ INSTALLED_APPS = [
 
     # base apps
     'account',
-    'main',
+    'main_page',
     'products',
 
-
 ]
-
-AUTH_USER_MODEL = 'account.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -59,6 +57,7 @@ TEMPLATES = [
     },
 ]
 
+
 WSGI_APPLICATION = 'avito.wsgi.application'
 
 
@@ -88,7 +87,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 
@@ -96,7 +95,7 @@ USE_L10N = True
 
 USE_TZ = True
 
+SESSION_SAVE_EVERY_REQUEST = True
 
 STATIC_URL = '/static/'
 
-LOGIN_REDIRECT_URL = '/'

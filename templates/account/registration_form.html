@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <title>Регистрация</title>
+</head>
+
+<body>
+<section class="is-fullheight">
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <div class="column is-4 is-offset-4">
+                <h3 class="title has-text-grey">Регистрация</h3>
+                <div class="row">
+                    <form action="/account/registration/" method="post">
+                        {% csrf_token %}
+                        {% if next %}<input type="hidden" name="next" value="{{ next }}">{% endif %}
+                        <div class="field">
+                            <input name="email" type="email" placeholder="Введите электронную почту"
+                                   {% if form.email.value %}value="{{ form.email.value }}"{% endif %} class="input">
+                        </div>
+                        <div class="field">
+                            <input name="password1" type="password" placeholder="Придумайте пароль"
+                                   {% if form.password.value %}value="{{ form.password.value }}"{% endif %}
+                                   class="input">
+                        </div>
+                        <div class="field">
+                            <input name="password2" type="password" placeholder="Повторите пароль"
+                                   {% if form.password2.value %}value="{{ form.password2.value }}"{% endif %}
+                                   class="input">
+                        </div>
+                        <button class="button is-block is-info is-medium is-fullwidth" type="submit">
+                            Зарегистрироваться
+                        </button>
+                    </form>
+                </div>
+                <p class="has-text-grey">
+                    <a href="/account/login/">Аторизоваться</a>&nbsp;·&nbsp;
+                    <a href="/feedback/">Нужна помощь?</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+
+</html>
