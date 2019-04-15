@@ -23,7 +23,7 @@
 
 6. Устанавливаем python пакеты
 
-        pip install -r requirements/txt
+        pip install -r requirements.txt
         
 
 ## Настройка проекта
