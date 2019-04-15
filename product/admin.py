@@ -1,9 +1,9 @@
 from django.contrib import admin
 from django.contrib.admin import register
-from products.models import Products
+from product.models import Product
 
 
-@register(Products)
+@register(Product)
 class ProductsAdmin(admin.ModelAdmin):
     list_display = ('title', )
 

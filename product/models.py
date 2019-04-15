@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Products(models.Model):
+class Product(models.Model):
     title = models.CharField('Название', max_length=100, default=None, blank=False)
     url = models.URLField('URL', blank=False)
     # Todo: поправить price на DecimalField после того как доработаем парсер
@@ -12,7 +12,7 @@ class Products(models.Model):
     created_at = models.DateField('Дата создания', blank=False)
 
     def __str__(self):
-        return f'<Products: {self.title} {self.url}>'
+        return f'<Product: {self.title} {self.url}>'
 
     class Meta:
         verbose_name = 'Товар'
