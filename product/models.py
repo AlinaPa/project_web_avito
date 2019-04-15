@@ -9,7 +9,6 @@ class Product(models.Model):
     description = models.CharField('Описание', max_length=300, blank=True)
     metro = models.CharField('Метро', max_length=300, blank=True)
     phone_number = models.CharField('Телефон', max_length=11, blank=False)
-    created_at = models.DateField('Дата создания', blank=False)
 
     def __str__(self):
         return f'<Product: {self.title} {self.url}>'

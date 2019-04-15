@@ -17,7 +17,7 @@ class ProductListView(ListView):
 class CreateProductView(FormView):
     form_class = CreateProductForm
     template_name = 'products/create.html'
-    success_url = "/"
+    success_url = "products/success_create.html"
 
     def form_valid(self, form):
         form.save()

@@ -9,6 +9,7 @@
 
     <title>Avito</title>
 </head>
+
 <body class="os x chrome chrome-chrome">
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -56,7 +57,7 @@
                            class="button is-outlined">Вход и регистрация</a>
                     </div>
                     <div class="navbar-item">
-                        <a href="/product/create/" data-marker="login-button"
+                        <a href="/account/login/" data-marker="login-button"
                            class="button is-info is-inverted"><strong>Подать объявление</strong></a>
                     </div>
                 </div>
@@ -65,35 +66,22 @@
     </div>
 </section>
 <section>
-    <div class="hero-body has-background-white-ter">
-        <div class="breadcrumb has-bullet-separator" aria-label="breadcrumbs">
-            <ul>
-                <li><a href="/moskva/nedvizhimost?s_trg=6">Недвижимость</a></li>
-                <li><a href="/moskva/rabota?s_trg=6">Работа</a></li>
-                <li><a href="/moskva/predlozheniya_uslug?s_trg=6">Услуги</a></li>
-                <li><a href="/moskva/lichnye_veschi?s_trg=11">Личные вещи</a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="container">
-        {% block content %}
-            <h2 class="subtitle">
-                Одежда, обувь, аксессуары
-            </h2>
-            <ul>
-                {% for product in product_list %}
-                    <li><a href="{{ product.url }}">{{ product.title }}</a> - {{ product.price }}</li>
-                {% empty %}
-                    <li>Не найдено объявлений в данной группе</li>
-                {% endfor %}
-            </ul>
-        {% endblock %}
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            </br>
+                <h1 class="title">
+                Вы успешно опубликовали объявление!
+            </h1>
+            </div>
     </div>
 </section>
-
-<footer class="footer is-primary">
-  <div class="content has-text-centered">
-  </div>
-</footer>
+<section>
+    <div class="hero-foot">
+        <footer class="footer">
+            <div class="content has-text-centered">
+            </div>
+        </footer>
+    </div>
+</section>
 </body>
 </html>

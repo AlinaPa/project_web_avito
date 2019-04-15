@@ -66,16 +66,53 @@
     </div>
 </section>
 <section>
-    <div class="hero-head">
+    <div class="hero-body">
         <div class="container has-text-centered">
+            </br>
             <h1 class="title">
                 Создать объявление
             </h1>
             <h2 class="subtitle">
                 Заполните поля ниже, чтобы опубликовать объявление
             </h2>
-                    <form action="/product/create/" method="POST">
+            <div class="column is-4 is-offset-4">
+                <div class="row">
+                    {% if form.errors %}
+                        <p>Вы ничего не ввели.</p>
+                        <p>Пожалуйста, заполните форму.</p>
+                    {% endif %}
+                    <form action="/product/create/" method="POST">{% csrf_token %}
+                        <div class="field">
+                            <input name="title" type="text" placeholder="Название объявления"
+                                   {% if form.title.value %}value="{{ form.title.value }}"{% endif %}
+                                   class="input is-primary">
+                        </div>
+                        <div class="field">
+                            <input name="description" type="text" placeholder="Описание товара"
+                                   {% if form.description.value %}value="{{ form.description.value }}"{% endif %}
+                                   class="input is-large is-primary">
+                        </div>
+                        <div class="field">
+                            <input name="price" type="text" placeholder="Цена товара"
+                                   {% if form.price.value %}value="{{ form.price.value }}"{% endif %}
+                                   class="input is-primary">
+                        </div>
+                        <div class="field">
+                            <input name="metro" type="text" placeholder="Укажите метро"
+                                   {% if form.metro.value %}value="{{ form.metro.value }}"{% endif %}
+                                   class="input is-primary">
+                        </div>
+                        <div class="field">
+                            <input name="phone_number" type="tel" placeholder="Укажите номер телефона"
+                                   {% if form.phone_number.value %}value="{{ form.phone_number.value }}"{% endif %}
+                                   class="input is-primary">
+                        </div>
+                        <button class="button is-block is-info is-medium is-fullwidth" type="submit">
+                            Опубликовать объявление
+                        </button>
                     </form>
+                </div>
+            </div>
         </div>
     </div>
 </section>
