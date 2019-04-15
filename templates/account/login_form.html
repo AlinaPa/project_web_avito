@@ -1,19 +1,16 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Авторизация</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
-    <!-- Bulma Version 0.7.4-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <link rel="stylesheet" href="https://unpkg.com/bulma@0.7.4/css/bulma.min.css"/>
     <link rel="stylesheet" type="templates/css" href="../account/login_form.css">
+
+    <title>Авторизация</title>
 </head>
 
-<body>
+<body class="os x chrome chrome-chrome">
 <section class="is-fullheight">
     <div class="hero-body">
         <div class="container has-text-centered">
@@ -25,7 +22,7 @@
                     {% endif %}
                     {% if next %}
                         {% if user.is_authenticated %}
-                            <p>Ваша учетная запись не подтверждена. Подтвердите аккаунт на почте.</p>
+                            <a href="/account/logout/">Выйти{{ user.username }}</a>
                         {% else %}
                             <p>Пожалуйста авторизуйтесь</p>
                         {% endif %}
@@ -43,6 +40,7 @@
                                    class="input">
                         </div>
                         <div class="field">
+                            <div class="has-text-grey">
                             <a href="/account/password_reset/">Забыли пароль?</a>
                         </div>
                         <button class="button is-block is-info is-medium is-fullwidth" type="submit">Войти</button>
@@ -57,5 +55,4 @@
     </div>
 </section>
 </body>
-
 </html>
