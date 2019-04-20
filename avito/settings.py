@@ -23,6 +23,7 @@ INSTALLED_APPS = [
 
     # base apps
     'account',
+    'main_page'
     'product',
 
 ]
@@ -106,7 +107,7 @@ SITE = 1
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 
-MEDIA_DIR = os.path.join(BASE_DIR, 'madia')
+MEDIA_DIR = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 
