@@ -1,5 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
+
+<form action="" class="navbar-form navbar-left" method="GET">
+            <div class="form-group">
+                <input type="text" name="q" class="form-control" placeholder="Введите запрос">
+            </div>
+            <button type="submit" class="btn btn-default">Поиск</button>
+</form>
+
     <div class="breadcrumb has-bullet-separator" aria-label="breadcrumbs">
         <ul>
             <li><a href="/moskva/nedvizhimost?s_trg=6">Недвижимость</a></li>
@@ -19,4 +27,22 @@
                 <li>Не найдено объявлений в данной группе</li>
             {% endfor %}
         </ul>
+
+      {% if is_paginated %}
+      <div class="pagination">
+          <span class="page-links">
+              {% if page_obj.has_previous %}
+                  <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">previous</a>
+              {% endif %}
+              <span class="page-current">
+                  Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+              </span>
+              {% if page_obj.has_next %}
+                  <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">next</a>
+              {% endif %}
+          </span>
+      </div>
+    {% endif %}
+
 {% endblock %}
+
