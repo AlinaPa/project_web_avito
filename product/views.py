@@ -3,13 +3,6 @@ from django.views.generic import ListView, DetailView, CreateView
 from product.models import Product
 
 
-class ProductListView(ListView):
-    model = Product
-    template_name = 'main_page/header.html'
-    paginate_by = 10
-    context_object_name = "product_list"
-
-
 class CreateProductView(CreateView):
     model = Product
     fields = (
@@ -30,4 +23,3 @@ class CreateProductView(CreateView):
 class ProductDetailView(DetailView):
     model = Product
     template_name = 'products/view_product.html'
-    context_object_name = "product"

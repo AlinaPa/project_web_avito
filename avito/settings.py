@@ -23,6 +23,7 @@ INSTALLED_APPS = [
 
     # base apps
     'account',
+    'main_page',
     'product',
 
 ]
