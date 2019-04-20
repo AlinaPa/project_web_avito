@@ -1,8 +1,8 @@
 from django.views.generic import ListView
 
-from products.models import Products
+from product.models import Product
 
 
 class ProductListView(ListView):
-    model = Products
+    model = Product
     template_name = 'main_page/header.html'

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="container has-text-centered">
+        </br>
+        <h1 class="title">
+            Создать объявление
+        </h1>
+        <h2 class="subtitle">
+            Заполните поля ниже, чтобы опубликовать объявление
+        </h2>
+        <div class="column is-4 is-offset-4">
+            <div class="row">
+                {% if form.errors %}
+                    <p>Вы ничего не ввели.</p>
+                    <p>Пожалуйста, заполните форму.</p>
+                {% endif %}
+                <form action="/product/create/" method="POST">{% csrf_token %}
+                    <div class="field">
+                        {{ form.as_p }}
+                    </div>
+                    <button class="button is-block is-info is-medium is-fullwidth" type="submit" value="Save">
+                        Опубликовать объявление
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -3,7 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 
 
-from products.models import Products
+from product.models import Product
 
 
 def get_html(url):
@@ -17,7 +17,7 @@ def get_html(url):
 
 
 def save_products(title, url, price, metro):
-	new_product = Products(title=title, url=url, price=price, metro=metro, created_at=datetime.datetime.now())
+	new_product = Product(title=title, url=url, price=price, metro=metro, created_at=datetime.datetime.now())
 	new_product.save()
 
 
