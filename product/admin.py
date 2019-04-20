@@ -4,6 +4,6 @@ from product.models import Product
 
 
 @register(Product)
-class ProductsAdmin(admin.ModelAdmin):
+class ProductAdmin(admin.ModelAdmin):
     list_display = ('title', )
 

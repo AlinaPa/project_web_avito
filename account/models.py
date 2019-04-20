@@ -4,11 +4,11 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 
 class User(AbstractUser):
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
+    USERNAME_FIELD = 'username'
+    REQUIRED_FIELDS = ['email']
 
     email = models.EmailField('Электронная почта', blank=False, unique=True)
-    username = models.CharField('Имя пользователя', max_length=65,  blank=True)
+    username = models.CharField('Имя пользователя', max_length=65,  blank=True, unique=True)
 
     class Meta:
         verbose_name = 'Пользователь'

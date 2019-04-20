@@ -1,99 +1,22 @@
-<!doctype html>
-<html lang="ru" class="mdl-js">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link rel="stylesheet" href="https://unpkg.com/bulma@0.7.4/css/bulma.min.css"/>
-    <link rel="stylesheet" type="templates/css" href="../main_page/header.css">
-
-    <title>Avito</title>
-</head>
-<body class="os x chrome chrome-chrome">
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-        crossorigin="anonymous"></script>
-
-<section class="hero is-primary is-bold">
-    <div class="hero-head">
-        <nav class="navbar">
-            <h1 class="title is-2">Avito</h1>
-            <ul class="navbar-menu">
-                <li class="navbar-item">
-                    <a href="/moskva" class="nav-link is-white"><strong>Объявления</strong></a>
-                </li>
-                <li class="navbar-item">
-                    <a href="/shops/moskva" class="nav-link"><strong>Магазины</strong></a>
-                </li>
-                <li class="navbar-item">
-                    <a href="/subscription?avcm=for_business"
-                       class="nav-link"><strong>Бизнес</strong></a>
-                </li>
-                <li class="navbar-item">
-                    <a href="//support.avito.ru" target="_blank" rel="noopener noreferrer"
-                       class="nav-link"><strong>Помощь</strong></a>
-                </li>
-            </ul>
-            <div class="navbar-end">
-                <div data-marker="header/favorites" class="navbar-item">
-                    <a href="/account/login/" title="Избранное" class="nav-link">
-                        <svg width="21" height="24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M10.918 5.085a5.256 5.256 0 0 1 7.524 0c2.077 2.114 2.077 5.541 0 7.655l-7.405 7.534a.75.75 0 0 1-1.074 0L2.558 12.74c-2.077-2.114-2.077-5.54 0-7.655a5.256 5.256 0 0 1 7.524 0c.15.152.289.312.418.479.13-.167.269-.327.418-.479z"
-                                  fill="#CCC" fill-rule="nonzero"></path>
-                        </svg>
-                    </a>
-                </div>
-                <div class="buttons">
-                    <div class="navbar-item">
-                        <a href="/account/login/" data-marker="login-button"
-                           class="button is-outlined">Вход и регистрация</a>
-                    </div>
-                    <div class="navbar-item">
-                        <a href="/product/create/" data-marker="login-button"
-                           class="button is-info is-inverted"><strong>Подать объявление</strong></a>
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </div>
-</section>
-<section>
-    <div class="hero-body has-background-white-ter">
-        <div class="breadcrumb has-bullet-separator" aria-label="breadcrumbs">
-            <ul>
-                <li><a href="/moskva/nedvizhimost?s_trg=6">Недвижимость</a></li>
-                <li><a href="/moskva/rabota?s_trg=6">Работа</a></li>
-                <li><a href="/moskva/predlozheniya_uslug?s_trg=6">Услуги</a></li>
-                <li><a href="/moskva/lichnye_veschi?s_trg=11">Личные вещи</a></li>
-            </ul>
-        </div>
+{% extends "base.html" %}
+{% block content %}
+    <div class="breadcrumb has-bullet-separator" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="/moskva/nedvizhimost?s_trg=6">Недвижимость</a></li>
+            <li><a href="/moskva/rabota?s_trg=6">Работа</a></li>
+            <li><a href="/moskva/predlozheniya_uslug?s_trg=6">Услуги</a></li>
+            <li><a href="/moskva/lichnye_veschi?s_trg=11">Личные вещи</a></li>
+        </ul>
     </div>
     <div class="container">
-        {% block content %}
-            <h2 class="subtitle">
-                Одежда, обувь, аксессуары
-            </h2>
-            <ul>
-                {% for product in product_list %}
-                    <li><a href="{{ product.url }}">{{ product.title }}</a> - {{ product.price }}</li>
-                {% empty %}
-                    <li>Не найдено объявлений в данной группе</li>
-                {% endfor %}
-            </ul>
-        {% endblock %}
-    </div>
-</section>
-
-<footer class="footer is-primary">
-  <div class="content has-text-centered">
-  </div>
-</footer>
-</body>
-</html>
+        <h2 class="subtitle">
+            Одежда, обувь, аксессуары
+        </h2>
+        <ul>
+            {% for product in product_list %}
+                <li><a href="{{ product.url }}">{{ product.title }}</a> - {{ product.price }}</li>
+            {% empty %}
+                <li>Не найдено объявлений в данной группе</li>
+            {% endfor %}
+        </ul>
+{% endblock %}

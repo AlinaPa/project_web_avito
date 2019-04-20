@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class ProductManage(models.Model):
+class ProductManage(models.Manager):
     def create_product(self, title):
         product = self.create(title=title)
         return product
