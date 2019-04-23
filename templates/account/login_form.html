@@ -21,13 +21,12 @@
                         <p>Ваш email или пароль указан неверно. Попробуйте еще раз.</p>
                     {% endif %}
                     {% if next %}
-                        {% if user.is_authenticated %}
-                            <a href="/account/logout/">Выйти{{ user.username }}</a>
+                        {% if user.is_authenticated %}>Приветствуем! {{ user.email }}
                         {% else %}
                             <p>Пожалуйста авторизуйтесь</p>
                         {% endif %}
                     {% endif %}
-                    <form action="/account/login/" method="POST">
+                    <form action="{% url 'account:login' %}" method="POST">
                         {% csrf_token %}
                         {% if next %}<input type="hidden" name="next" value="{{ next }}">{% endif %}
                         <div class="field">

@@ -9,7 +9,6 @@ class ProductManage(models.Manager):
 
 class Product(models.Model):
     title = models.CharField('Название', max_length=100, default=None, blank=False)
-    url = models.URLField('URL', blank=False)
     # Todo: поправить price на DecimalField после того как доработаем парсер
     price = models.CharField('Цена', max_length=15, default=None)
     description = models.CharField('Описание', max_length=300, blank=True)
