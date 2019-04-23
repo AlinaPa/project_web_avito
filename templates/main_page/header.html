@@ -1,48 +1,48 @@
 {% extends "base.html" %}
 {% block content %}
 
-<form action="" class="navbar-form navbar-left" method="GET">
-            <div class="form-group">
-                <input type="text" name="q" class="form-control" placeholder="Введите запрос">
-            </div>
-            <button type="submit" class="btn btn-default">Поиск</button>
-</form>
-
-    <div class="breadcrumb has-bullet-separator" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/moskva/nedvizhimost?s_trg=6">Недвижимость</a></li>
-            <li><a href="/moskva/rabota?s_trg=6">Работа</a></li>
-            <li><a href="/moskva/predlozheniya_uslug?s_trg=6">Услуги</a></li>
-            <li><a href="/moskva/lichnye_veschi?s_trg=11">Личные вещи</a></li>
-        </ul>
+    <div class="columns">
+        <div class="column is-two-fifths">
+            <form action="" method="GET">
+                <input name="q" type="text" class="input" placeholder="Введите запрос">
+                <div class="column">
+                    <button type="submit" class="button">Поиск</button>
+                </div>
+            </form>
+        </div>
     </div>
+
     <div class="container">
-        <h2 class="subtitle">
+        <h2 class="subtitle is-right">
             Одежда, обувь, аксессуары
         </h2>
-        <ul>
-            {% for product in product_list %}
-                <li><a href="{{ product.url }}">{{ product.title }}</a> - {{ product.price }}</li>
-            {% empty %}
-                <li>Не найдено объявлений в данной группе</li>
-            {% endfor %}
-        </ul>
+        <div class="styles-foot">
+            <ul class="tile is-vertical">
+                {% for product in product_list %}
+                    <li><a href="{% url 'product:view_product' product.id %}">{{ product.title }}</a> - {{ product.price }} </li>
 
-      {% if is_paginated %}
-      <div class="pagination">
-          <span class="page-links">
-              {% if page_obj.has_previous %}
-                  <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">previous</a>
-              {% endif %}
-              <span class="page-current">
-                  Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-              </span>
-              {% if page_obj.has_next %}
-                  <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">next</a>
-              {% endif %}
-          </span>
-      </div>
-    {% endif %}
+                {% empty %}
+                    <li>Не найдено объявлений по данному запросу, проверьте написание</li>
+                {% endfor %}
+            </ul>
+        </div>
+        </br>
+
+    </div>
+    <div class="tile is-ancestor">
+        <nav class="pagination is-centered" role="navigation">
+            {% if page_obj.has_previous %}
+                <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}"
+                   class="pagination-previous">назад</a>{% endif %}
+            {% if page_obj.has_next %}
+                <a href="{{ request.path }}?page={{ page_obj.next_page_number }}" class="pagination-next">далее</a>
+            {% endif %}
+            <ul class="pagination-list">
+                <li>Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}
+                </li>
+            </ul>
+        </nav>
+    </div>
 
 {% endblock %}
 
