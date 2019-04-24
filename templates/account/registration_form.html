@@ -1,14 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link rel="stylesheet" href="https://unpkg.com/bulma@0.7.4/css/bulma.min.css"/>
-    <link rel="stylesheet" type="templates/css" href="../account/registration_form.css">
-
-    <title>Регистрация</title>
-</head>
+{% extends "base.html" %}
+{% block content %}
 
 <body>
 <section class="is-fullheight">
@@ -21,7 +12,7 @@
                         <p>Вы ничего не ввели.</p>
                         <p>Пожалуйста, заполните форму.</p>
                     {% endif %}
-                    <form action="/account/registration/" method="post">
+                    <form action="{% url 'account:registration' %}" method="post">
                         {% csrf_token %}
                         {% if next %}<input type="hidden" name="next" value="{{ next }}">{% endif %}
                         <div class="field">
@@ -44,7 +35,7 @@
                     </form>
                 </div>
                 <p class="has-text-grey">
-                    <a href="/account/login/">Аторизоваться</a>&nbsp;·&nbsp;
+                    <a href="{% url 'account:login' %}">Аторизоваться</a>&nbsp;·&nbsp;
                     <a href="/feedback/">Нужна помощь?</a>
                 </p>
             </div>
@@ -53,4 +44,4 @@
 </section>
 </body>
 
-</html>
+{% endblock %}
