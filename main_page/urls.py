@@ -1,7 +1,7 @@
-from django.urls import path
+from django.conf.urls import url
 
 from main_page.views import ProductListView
 
 urlpatterns = [
-    path(r'', ProductListView.as_view(), name='index'),
+    url(r'', ProductListView.as_view(), name='index'),
 ]

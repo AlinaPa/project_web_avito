@@ -19,11 +19,11 @@
         <div class="styles-foot">
             <ul class="tile is-vertical">
                 {% for product in product_list %}
-                    <li><a href="{% url 'product:view_product' product.id %}">{{ product.title }}</a> - {{ product.price }} </li>
-
-                {% empty %}
+                    <li><a href="{{ url('product:view_product') }}">{{ product.title }}</a> - {{ product.price }} </li>
+                    {% endfor %}
+                {% if not product_list %}
                     <li>Не найдено объявлений по данному запросу, проверьте написание</li>
-                {% endfor %}
+                {% endif %}
             </ul>
         </div>
         </br>

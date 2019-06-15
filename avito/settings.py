@@ -1,6 +1,9 @@
 import os
+import re
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+SECRET_KEY = 'pd0dy7expu@o*9ko&cfwvb76@p8y2lrt)@gm0278tfw+9h!rt-'
 
 DEBUG = True
 
@@ -15,6 +18,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_jinja',
 
     'rest_framework',
     # 'rest_framework.authtoken',
@@ -46,8 +50,50 @@ BASE_TEMPLATES_DIRS = (
     AVITO_TEMPLATES_DIR,
 )
 
+
+jinja2_extensions = (
+    'jinja2.ext.i18n',
+    'jinja2.ext.autoescape',
+    'jinja2.ext.with_',
+    'jinja2.ext.do',
+
+    'django_jinja.builtins.extensions.CsrfExtension',
+    'django_jinja.builtins.extensions.CacheExtension',
+    'django_jinja.builtins.extensions.TimezoneExtension',
+    'django_jinja.builtins.extensions.UrlsExtension',
+    'django_jinja.builtins.extensions.StaticFilesExtension',
+    'django_jinja.builtins.extensions.DjangoFiltersExtension',
+)
+
+jinja2_exclude_apps = (
+    'admin',
+)
+jinja2_exculde_dirs_regexp = '^(?!{}).*$'.format('|'.join(f'{re.escape(dir)}/' for dir in jinja2_exclude_apps))
+
+
 TEMPLATES = [
     {
+        'BACKEND': 'django_jinja.backend.Jinja2',
+        'APP_DIRS': True,
+        'DIRS': BASE_TEMPLATES_DIRS,
+        'OPTIONS': {
+            'match_extension': None,
+            'match_regex': jinja2_exculde_dirs_regexp,
+            'undefined': None,
+            'context_processors': [
+                'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
+                'django.template.context_processors.request',
+                'django.contrib.messages.context_processors.messages',
+            ],
+            'extensions': jinja2_extensions,
+            'auto_reload': DEBUG,
+        }
+    },
+    {
+        'NAME': 'django',
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': BASE_TEMPLATES_DIRS,
         'APP_DIRS': True,
