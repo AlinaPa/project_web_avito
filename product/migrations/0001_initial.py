@@ -15,8 +15,7 @@ class Migration(migrations.Migration):
             name='Product',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(default=None, max_length=100, verbose_name='Название')),
-                ('url', models.URLField(verbose_name='URL')),
+                ('title', models.CharField(default="", max_length=100, verbose_name='Название')),
                 ('price', models.CharField(default=None, max_length=15, verbose_name='Цена')),
                 ('description', models.CharField(blank=True, max_length=300, verbose_name='Описание')),
                 ('metro', models.CharField(blank=True, max_length=300, verbose_name='Метро')),
