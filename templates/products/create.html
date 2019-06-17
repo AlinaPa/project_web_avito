@@ -6,20 +6,72 @@
             Создать объявление
         </h1>
         <h2 class="subtitle">
-            Заполните поля ниже, чтобы опубликовать объявление
+            Заполните поля ниже, чтобы создать объявление
         </h2>
-        <div class="column is-4 is-offset-4">
+        <div class="column is-6 is-offset-3">
             <div class="row">
                 {% if form.errors %}
-                    <p>Вы ничего не ввели.</p>
-                    <p>Пожалуйста, заполните форму.</p>
+                    <p>Пожалуйста, заполните форму полностью</p>
                 {% endif %}
                 <form action="/product/create/" method="POST">{% csrf_token %}
+                    <table class="table is-fullwidth has-background-white-ter">
+                        <tr>
+                            <th>
+                                <div class="field">
+                                    <label class="label has-text-left">Название объявления</label>
+                                    <div class="control">
+                                        <input name="title" type="text" placeholder="Название"
+                                               {% if form.title.value %}value="{{ form.title.value }}"{% endif %}
+                                               class="input">
+                                    </div>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="field">
+                                    <label class="label has-text-left">Телефон</label>
+                                    <div class="control">
+                                        <input name="phone_number" type="text" placeholder="Укажите ваш номер"
+                                               {% if form.phone_number.value %}value="{{ form.phone_number.value }}"{% endif %}
+                                               class="input">
+                                    </div>
+                                </div>
+                            </th>
+                        </tr>
+                    </table>
+                    <table class="table is-fullwidth has-background-white-ter">
+                        <tr>
+                            <th>
+                                <div class="field">
+                                    <label class="label has-text-left ">Метро</label>
+                                    <div class="control">
+                                        <input name="metro" type="text" placeholder="Укажите ближайшее метро"
+                                               {% if form.metro.value %}value="{{ form.metro.value }}"{% endif %}
+                                               class="input">
+                                    </div>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="field">
+                                    <label class="label has-text-left">Цена</label>
+                                    <div class="control">
+                                        <input name="price" type="text" placeholder="Укажите цену товара"
+                                               {% if form.price.value %}value="{{ form.price.value }}"{% endif %}
+                                               class="input">
+                                    </div>
+                                </div>
+                            </th>
+                        </tr>
+                    </table>
                     <div class="field">
-                        {{ form.as_p }}
+                        <label class="label has-text-left">Описание</label>
+                        <div class="control">
+                            <textarea name="description" type="text" placeholder="Заполните описание товара"
+                                      {% if form.description.value %}value="{{ form.description.value }}"{% endif %}
+                                      class="textarea"></textarea>
+                        </div>
                     </div>
-                    <button class="button is-block is-info is-medium is-fullwidth" type="submit" value="Save">
-                        Опубликовать объявление
+                    <button class="button is-block is-dark is-medium is-fullwidth" type="submit" value="Save">
+                        <strong>Создать объявление</strong>
                     </button>
                 </form>
             </div>

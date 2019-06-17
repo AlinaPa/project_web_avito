@@ -11,61 +11,66 @@
 </head>
 
 <body class="os x chrome chrome-chrome">
-<section class="hero is-primary is-bold">
-    <div class="hero-head">
-        <nav class="navbar">
-            <h1 class="title is-2"><a href="{% url 'main_page:index' %}">Avito</a></h1>
-            <ul class="navbar-menu">
-                <li class="navbar-item">
-                    <a href="/moskva" class="nav-link is-white"><strong>Объявления</strong></a>
-                </li>
-                <li class="navbar-item">
-                    <a href="/shops/moskva" class="nav-link"><strong>Магазины</strong></a>
-                </li>
-                <li class="navbar-item">
-                    <a href="/subscription?avcm=for_business"
-                       class="nav-link"><strong>Бизнес</strong></a>
-                </li>
-                <li class="navbar-item">
-                    <a href="//support.avito.ru" target="_blank" rel="noopener noreferrer"
-                       class="nav-link"><strong>Помощь</strong></a>
-                </li>
-            </ul>
-            <div class="navbar-end">
-                <div data-marker="header/favorites" class="navbar-item">
-                    <a href={% url 'account:login' %} title="Избранное" class="nav-link">
-                        <svg width="21" height="24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M10.918 5.085a5.256 5.256 0 0 1 7.524 0c2.077 2.114 2.077 5.541 0 7.655l-7.405 7.534a.75.75 0 0 1-1.074 0L2.558 12.74c-2.077-2.114-2.077-5.54 0-7.655a5.256 5.256 0 0 1 7.524 0c.15.152.289.312.418.479.13-.167.269-.327.418-.479z"
-                                  fill="#CCC" fill-rule="nonzero"></path>
-                        </svg>
-                    </a>
+<section class="hero is-black is-bold">
+    <div class="hero-head is-centered">
+        <div class="container is-desktop">
+            <nav class="navbar" role="navigation" aria-label="main navigation">
+                <h1 class="title is-2"><a href="{% url 'main_page:index' %}">Avito</a></h1>
+                <ul class="navbar-menu">
+                    <li class="navbar-item">
+                        <a href="/" class="nav-link is-white"><strong>Объявления</strong></a>
+                    </li>
+                    <li class="navbar-item">
+                        <a href="/shops/moskva" class="nav-link"><strong>Магазины</strong></a>
+                    </li>
+                    <li class="navbar-item">
+                        <a href="/about"
+                           class="nav-link"><strong>О нас</strong></a>
+                    </li>
+                    <li class="navbar-item">
+                        <a href="/support" target="_blank" rel="noopener noreferrer"
+                           class="nav-link"><strong>Помощь</strong></a>
+                    </li>
+                </ul>
+                <div class="navbar-end">
+                    {% if user.is_authenticated %}
+                        <div class="buttons">
+                            <a class="button is-light" href="{% url 'account:profile' %}">Личный кабинет</a>
+                            <a class="button is-light" href="{% url 'product:product_create' %}">Подать объявление</a>
+                            <a class="button is-light" href="{% url 'account:logout' %}">Выйти</a>
+                        </div>
+                    {% else %}
+                        <div data-marker="header/favorites" class="navbar-item">
+                            <a href="{% url 'account:login' %}" title="Избранное" class="nav-link">
+                                <svg width="21" height="24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10.918 5.085a5.256 5.256 0 0 1 7.524 0c2.077 2.114 2.077 5.541 0 7.655l-7.405 7.534a.75.75 0 0 1-1.074 0L2.558 12.74c-2.077-2.114-2.077-5.54 0-7.655a5.256 5.256 0 0 1 7.524 0c.15.152.289.312.418.479.13-.167.269-.327.418-.479z"
+                                          fill="#CCC" fill-rule="nonzero"></path>
+                                </svg>
+                            </a>
+                        </div>
+                        <a class="buttons"></a>
+                        <div class="navbar-item">
+                            <a href="{% url 'account:login' %}" class="button is-outlined">Вход и регистрация</a>
+                        </div>
+                    {% endif %}
                 </div>
-                <div class="buttons">
-                    <div class="navbar-item">
-                        <a href={% url 'account:login' %}
-                           class="button is-outlined">Вход и регистрация</a>
-                    </div>
-                    <div class="navbar-item">
-                        <a href={% url 'product:product_create' %}
-                           class="button is-info is-inverted"><strong>Подать объявление</strong></a>
-                    </div>
-                </div>
-            </div>
-        </nav>
+            </nav>
+        </div>
     </div>
 </section>
-<section>
-    <div class="hero-body has-background-white-ter">
-        {% block content %}{% endblock %}
-    </div>
+<section class="hero-body has-background-white-ter">
+        <div class="container is-desktop">
+            {% block content %}{% endblock %}
+        </div>
 </section>
-<section>
-    <div class="hero-foot">
-        <footer class="footer">
+<section class="hero-foot">
+        <footer class="footer has-background-grey-lighter">
             <div class="content has-text-centered">
+                <div class="container is-desktop">
+                    Тут будет футер
+                </div>
             </div>
         </footer>
-    </div>
 </section>
 </body>
 </html>

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <h3 class="title is-4">Приветствуем, {{ user.username }}!</h3>
+            <div class="columns center-block">
+                <div class="column is-6 is-offset-3">
+                    <div class="card has-text-left">
+                        <div class="card-content">
+                            <div class="content"><strong>Ваш логин: </strong>{{ user.username }}</div>
+                            <div class="content"><strong>Электронная почта: </strong>{{ user.email }}</div>
+                            {% if user.profile.birthday %}
+                                <div class="content"><strong>День рождения: </strong>{{ user.profile.birthday }}
+                                </div>
+                            {% else %}
+                                <form>
+                                    <div class="form-group">
+                                        <div class="content inputDate"><strong>День
+                                            рождения: </strong><input type="date" class="form-control"></div>
+                                    </div>
+                                </form>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="card has-text-left">
+                        <div class="card-content">
+                            <div class="content"><strong>Изменить пароль: </strong></div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-content skills-content">
+                            <div class="content">
+                                <p>Если вы хотите внести изменения в данные профиля,
+                                    пожалуйста, напишите в службу поддержки.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,49 +1,46 @@
 {% extends "base.html" %}
 {% block content %}
 
-<body class="os x chrome chrome-chrome">
-<section class="is-fullheight">
-    <div class="hero-body">
-        <div class="container has-text-centered">
-            <div class="column is-4 is-offset-4">
-                <h3 class="title has-text-grey">Авторизация</h3>
-                <div class="row">
-                    {% if form.errors %}
-                        <p>Ваш email или пароль указан неверно. Попробуйте еще раз.</p>
-                    {% endif %}
-                    {% if next %}
-                        {% if user.is_authenticated %}>Приветствуем! {{ user.email }}
-                        {% else %}
-                            <p>Пожалуйста авторизуйтесь</p>
+    <body class="os x chrome chrome-chrome">
+    <section class="is-fullheight">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <div class="column is-4 is-offset-4">
+                    <h3 class="title has-text-grey">Авторизация</h3>
+                    <div class="row">
+                        {% if form.errors %}
+                            <p>Ваш логин или пароль указан неверно. Попробуйте еще раз.</p>
                         {% endif %}
-                    {% endif %}
-                    <form action="{% url 'account:login' %}" method="POST">
-                        {% csrf_token %}
-                        {% if next %}<input type="hidden" name="next" value="{{ next }}">{% endif %}
-                        <div class="field">
-                            <input name="email" type="email" placeholder="Ваша электронная почта"
-                                   {% if form.email.value %}value="{{ form.email.value }}"{% endif %} class="input">
-                        </div>
-                        <div class="field">
-                            <input name="password" type="password" placeholder="Ваш пароль"
-                                   {% if form.password.value %}value="{{ form.password.value }}"{% endif %}
-                                   class="input">
-                        </div>
-                        <div class="field">
-                            <div class="has-text-grey">
-                            <a href="/account/password_reset/">Забыли пароль?</a>
-                        </div>
-                        <button class="button is-block is-info is-medium is-fullwidth" type="submit">Войти</button>
-                    </form>
+                        <form action="{% url 'account:login' %}" method="POST">
+                            {% csrf_token %}
+                            <div class="field">
+                                <input name="username" type="text" placeholder="Ваш логин"
+                                       {% if form.username.value %}value="{{ form.username.value }}"{% endif %}
+                                       class="input">
+                            </div>
+                            <div class="field">
+                                <input name="password" type="password" placeholder="Ваш пароль"
+                                       {% if form.password.value %}value="{{ form.password.value }}"{% endif %}
+                                       class="input">
+                            </div>
+                            <div class="field">
+                                <div class="has-text-grey">
+                                    <a href="/account/password_reset/">Забыли пароль?</a>
+                                </div>
+                                <button class="button is-block is-dark is-medium is-fullwidth" type="submit"
+                                        value="login"><strong>Войти</strong>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <p class="has-text-grey">
+                        <a href="{% url 'account:registration' %}">Зарегистрироваться</a>&nbsp;·&nbsp;
+                        <a href="/feedback/">Нужна помощь?</a>
+                    </p>
                 </div>
-                <p class="has-text-grey">
-                    <a href="{% url 'account:registration' %}">Зарегистрироваться</a>&nbsp;·&nbsp;
-                    <a href="/feedback/">Нужна помощь?</a>
-                </p>
             </div>
         </div>
-    </div>
-</section>
-</body>
+    </section>
+    </body>
 
 {% endblock %}

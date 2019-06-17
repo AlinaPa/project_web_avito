@@ -1,47 +1,52 @@
 {% extends "base.html" %}
 {% block content %}
 
-<body>
-<section class="is-fullheight">
-    <div class="hero-body">
-        <div class="container has-text-centered">
-            <div class="column is-4 is-offset-4">
-                <h3 class="title has-text-grey">Регистрация</h3>
-                <div class="row">
-                    {% if form.errors %}
-                        <p>Вы ничего не ввели.</p>
-                        <p>Пожалуйста, заполните форму.</p>
-                    {% endif %}
-                    <form action="{% url 'account:registration' %}" method="post">
-                        {% csrf_token %}
-                        {% if next %}<input type="hidden" name="next" value="{{ next }}">{% endif %}
-                        <div class="field">
-                            <input name="email" type="email" placeholder="Введите электронную почту"
-                                   {% if form.email.value %}value="{{ form.email.value }}"{% endif %} class="input">
-                        </div>
-                        <div class="field">
-                            <input name="password1" type="password" placeholder="Придумайте пароль"
-                                   {% if form.password.value %}value="{{ form.password.value }}"{% endif %}
-                                   class="input">
-                        </div>
-                        <div class="field">
-                            <input name="password2" type="password" placeholder="Повторите пароль"
-                                   {% if form.password2.value %}value="{{ form.password2.value }}"{% endif %}
-                                   class="input">
-                        </div>
-                        <button class="button is-block is-info is-medium is-fullwidth" type="submit">
-                            Зарегистрироваться
-                        </button>
-                    </form>
+    <body>
+    <section class="is-fullheight">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <div class="column is-4 is-offset-4">
+                    <h3 class="title has-text-grey">Регистрация</h3>
+                    <div class="row">
+                        {% if form.errors %}
+                            <p>Вы ничего не ввели.</p>
+                            <p>Пожалуйста, заполните форму.</p>
+                        {% endif %}
+                        <form action="{% url 'account:registration' %}" method="post">
+                            {% csrf_token %}
+                            <div class="field">
+                                <input name="username" type="text" placeholder="Введите логин"
+                                       {% if form.username.value %}value="{{ form.username.value }}"{% endif %}
+                                       class="input">
+                            </div>
+                            <div class="field">
+                                <input name="email" type="email" placeholder="Введите электронную почту"
+                                       {% if form.email.value %}value="{{ form.email.value }}"{% endif %} class="input">
+                            </div>
+                            <div class="field">
+                                <input name="password1" type="password"
+                                       placeholder="Придумайте пароль (не менее 9 символов)"
+                                       {% if form.password.value %}value="{{ form.password.value }}"{% endif %}
+                                       class="input">
+                            </div>
+                            <div class="field">
+                                <input name="password2" type="password" placeholder="Повторите пароль"
+                                       {% if form.password2.value %}value="{{ form.password2.value }}"{% endif %}
+                                       class="input">
+                            </div>
+                            <button class="button is-block is-info is-medium is-fullwidth" type="submit">
+                                Зарегистрироваться
+                            </button>
+                        </form>
+                    </div>
+                    <p class="has-text-grey">
+                        <a href="{% url 'account:login' %}">Аторизоваться</a>&nbsp;·&nbsp;
+                        <a href="/feedback/">Нужна помощь?</a>
+                    </p>
                 </div>
-                <p class="has-text-grey">
-                    <a href="{% url 'account:login' %}">Аторизоваться</a>&nbsp;·&nbsp;
-                    <a href="/feedback/">Нужна помощь?</a>
-                </p>
             </div>
         </div>
-    </div>
-</section>
-</body>
+    </section>
+    </body>
 
 {% endblock %}
