@@ -1,15 +1,10 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from model_utils.models import TimeStampedModel
 from werkzeug.security import generate_password_hash, check_password_hash
 
 
 class User(AbstractUser):
-    USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = ['email']
-
-    email = models.EmailField('Электронная почта', blank=False, unique=True)
-    username = models.CharField('Имя пользователя', max_length=65,  blank=True, unique=True)
-
     class Meta:
         verbose_name = 'Пользователь'
         verbose_name_plural = 'Пользователи'
@@ -26,3 +21,15 @@ class User(AbstractUser):
     @property
     def is_admin(self):
         return self.is_staff or self.is_superuser
+
+
+class Profile(TimeStampedModel):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name='Пользователь', related_name='profile')
+    birthday = models.DateField('Дата рождения', null=True, default=None)
+
+    class Meta:
+        verbose_name = 'Профиль'
+        verbose_name_plural = 'Профили'
+
+    def __str__(self):
+        return str(self.user)
