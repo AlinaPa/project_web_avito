@@ -12,4 +12,5 @@ class CreateProductForm(forms.ModelForm):
             'price',
             'metro',
             'phone_number',
+            'photo',
         )

@@ -13,7 +13,7 @@
                 {% if form.errors %}
                     <p>Пожалуйста, заполните форму полностью</p>
                 {% endif %}
-                <form action="/product/create/" method="POST">{% csrf_token %}
+                <form action="/product/create/" enctype="multipart/form-data" method="POST">{% csrf_token %}
                     <table class="table is-fullwidth has-background-white-ter">
                         <tr>
                             <th>
@@ -62,6 +62,20 @@
                             </th>
                         </tr>
                     </table>
+                    <div class="field">
+                        <label class="label has-text-left">Выберите фото</label>
+                        <div class="control">
+                            <div class="file is-boxed">
+                                <label class="file-label">
+                                    <input name="photo" type="file" class="file-input"
+                                           {% if form.photo.value %}value="{{ form.photo.value }}"{% endif %}>
+                                    <span class="file-cta">
+                                        <span class="file-label">Нажмите, чтобы загрузить</span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
                     <div class="field">
                         <label class="label has-text-left">Описание</label>
                         <div class="control">

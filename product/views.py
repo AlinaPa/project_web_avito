@@ -1,17 +1,11 @@
 from django.views.generic import DetailView, CreateView
 
+from product.forms import CreateProductForm
 from product.models import Product
 
 
 class CreateProductView(CreateView):
-    model = Product
-    fields = (
-        'title',
-        'description',
-        'price',
-        'metro',
-        'phone_number',
-    )
+    form_class = CreateProductForm
     template_name = 'products/create.html'
     success_url = "/product/success_create/"
 
