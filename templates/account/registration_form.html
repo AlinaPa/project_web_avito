@@ -34,14 +34,14 @@
                                        {% if form.password2.value %}value="{{ form.password2.value }}"{% endif %}
                                        class="input">
                             </div>
-                            <button class="button is-block is-info is-medium is-fullwidth" type="submit">
-                                Зарегистрироваться
+                            <button class="button is-block is-dark is-medium is-fullwidth" type="submit">
+                                <strong>Зарегистрироваться</strong>
                             </button>
                         </form>
                     </div>
                     <p class="has-text-grey">
                         <a href="{% url 'account:login' %}">Аторизоваться</a>&nbsp;·&nbsp;
-                        <a href="/feedback/">Нужна помощь?</a>
+                        <a href="/support/">Нужна помощь?</a>
                     </p>
                 </div>
             </div>

@@ -1,7 +1,7 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
+
 {% block content %}
     <div class="container has-text-centered">
-        </br>
         <h1 class="title">
             Создать объявление
         </h1>
@@ -13,7 +13,7 @@
                 {% if form.errors %}
                     <p>Пожалуйста, заполните форму полностью</p>
                 {% endif %}
-                <form action="/product/create/" enctype="multipart/form-data" method="POST">{% csrf_token %}
+                <form action="{% url 'product:product_create' %}" method="POST">{% csrf_token %}
                     <table class="table is-fullwidth has-background-white-ter">
                         <tr>
                             <th>

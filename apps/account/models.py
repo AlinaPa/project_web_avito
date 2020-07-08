@@ -23,8 +23,13 @@ class User(AbstractUser):
         return self.is_staff or self.is_superuser
 
 
+class RegistrationManager(models.Manager):
+    def create_profile(self, user: User):
+        return self.create(profile=user)
+
+
 class Profile(TimeStampedModel):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name='Пользователь', related_name='profile')
+    user = models.OneToOneField(User, models.CASCADE, verbose_name='Пользователь', related_name='profile')
     birthday = models.DateField('Дата рождения', null=True, default=None)
 
     class Meta:
@@ -33,3 +38,5 @@ class Profile(TimeStampedModel):
 
     def __str__(self):
         return str(self.user)
+
+    objects = RegistrationManager()

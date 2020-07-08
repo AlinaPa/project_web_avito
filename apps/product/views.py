@@ -1,7 +1,7 @@
 from django.views.generic import DetailView, CreateView
 
-from product.forms import CreateProductForm
-from product.models import Product
+from apps.product.forms import CreateProductForm
+from apps.product.models import Product
 
 
 class CreateProductView(CreateView):

@@ -1,6 +1,6 @@
 from django.conf.urls import url
 
-from account.views import LoginView, RegisterView, ProfileView, LogoutView
+from apps.account.views import LoginView, RegisterView, ProfileView, LogoutView
 
 urlpatterns = [
     url(r'^login/$', LoginView.as_view(), name='login'),

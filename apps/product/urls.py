@@ -1,7 +1,7 @@
 from django.conf.urls import url
 from django.views.generic import TemplateView
 
-from product.views import CreateProductView, ProductDetailView
+from apps.product.views import ProductDetailView, CreateProductView
 
 urlpatterns = [
     url(r'^(?P<pk>\d+)/$', ProductDetailView.as_view(), name='view_product'),

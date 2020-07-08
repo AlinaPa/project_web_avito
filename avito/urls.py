@@ -5,8 +5,9 @@ from django.contrib.admin import site
 from avito import settings
 
 urlpatterns = [
-    url(r'', include(('main_page.urls', 'main_page'))),
+    url(r'^account/', include(('apps.account.urls', 'account'))),
     url(r'^admin/', include((site.get_urls(), 'admin'))),
-    url(r'^account/', include(('account.urls', 'account'))),
-    url(r'^product/', include(('product.urls', 'product'))),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    url(r'^product/', include(('apps.product.urls', 'product'))),
+    url(r'', include(('apps.main_page.urls', 'main_page'))),
+] + static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS)
+
