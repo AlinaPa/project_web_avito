@@ -14,6 +14,7 @@ class Product(models.Model):
     description = models.CharField('Описание', max_length=300)
     metro = models.CharField('Метро', max_length=300, blank=True)
     phone_number = models.CharField('Телефон', max_length=11)
+    photo = models.ImageField('Фотография', null=True, default=None, upload_to='products')
     created_at = models.DateTimeField('Дата создания', auto_now_add=True)
 
     objects = ProductManage()

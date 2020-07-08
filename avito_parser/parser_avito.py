@@ -3,7 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 
 
-from product.models import Product
+from apps.product.models import Product
 
 
 def get_html(url):

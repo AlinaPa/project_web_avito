@@ -4,8 +4,8 @@ from django.views.generic import FormView, TemplateView
 from django import forms
 from django.contrib.auth import authenticate, login, logout
 
-from account.forms import LoginForm, RegistrationForm
-from account.models import User, Profile
+from apps.account.forms import LoginForm, RegistrationForm
+from apps.account.models import User, Profile
 
 
 class LoginView(FormView):

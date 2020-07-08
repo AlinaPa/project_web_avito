@@ -5,33 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="stylesheet" href="https://unpkg.com/bulma@0.7.4/css/bulma.min.css"/>
-    <link rel="stylesheet" type="templates/css" href="../main_page/header.css">
+    <link rel="stylesheet" type="templates/css" href="../apps/main_page/header.css">
 
-    <title>Avito</title>
+    <title>AD</title>
+    <style>
+        body {
+          background: url(../static/main_page/body.png);
+          background-size: 100%;
+        }
+        footer {
+          background: url(../static/main_page/footer.png);
+          background-size: 100%;
+        }
+    </style>
 </head>
 
 <body class="os x chrome chrome-chrome">
-<section class="hero is-black is-bold">
+<section class="hero">
     <div class="hero-head is-centered">
         <div class="container is-desktop">
-            <nav class="navbar" role="navigation" aria-label="main navigation">
-                <h1 class="title is-2"><a href="{% url 'main_page:index' %}">Avito</a></h1>
-                <ul class="navbar-menu">
-                    <li class="navbar-item">
-                        <a href="/" class="nav-link is-white"><strong>Объявления</strong></a>
-                    </li>
-                    <li class="navbar-item">
-                        <a href="/shops/moskva" class="nav-link"><strong>Магазины</strong></a>
-                    </li>
-                    <li class="navbar-item">
-                        <a href="/about"
-                           class="nav-link"><strong>О нас</strong></a>
-                    </li>
-                    <li class="navbar-item">
-                        <a href="/support" target="_blank" rel="noopener noreferrer"
-                           class="nav-link"><strong>Помощь</strong></a>
-                    </li>
-                </ul>
+            <nav class="navbar">
+                <div class="tabs is-medium">
+                    <ul>
+                        <li><a>Новости</a></li>
+                        <li><a>Объявления</a></li>
+                    </ul>
+                </div>
+
                 <div class="navbar-end">
                     {% if user.is_authenticated %}
                         <div class="buttons">
@@ -58,16 +58,15 @@
         </div>
     </div>
 </section>
-<section class="hero-body has-background-white-ter">
+<section class="hero-body">
         <div class="container is-desktop">
             {% block content %}{% endblock %}
         </div>
 </section>
 <section class="hero-foot">
-        <footer class="footer has-background-grey-lighter">
+        <footer class="footer">
             <div class="content has-text-centered">
                 <div class="container is-desktop">
-                    Тут будет футер
                 </div>
             </div>
         </footer>

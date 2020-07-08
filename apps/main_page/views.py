@@ -1,6 +1,6 @@
 from django.views.generic import ListView
 from django.db.models import Q
-from product.models import Product
+from apps.product.models import Product
 
 
 class ProductListView(ListView):
