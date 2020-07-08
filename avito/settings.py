@@ -6,7 +6,7 @@ SECRET_KEY = 'pd0dy7expu@o*9ko&cfwvb76@p8y2lrt)@gm0278tfw+9h!rt-'
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 AUTH_USER_MODEL = 'account.User'
 

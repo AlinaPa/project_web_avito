@@ -1,10 +1,12 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
-from model_utils.models import TimeStampedModel
 from werkzeug.security import generate_password_hash, check_password_hash
 
 
 class User(AbstractUser):
+    first_name = models.CharField('Имя', max_length=255, blank=True)
+    last_name = models.CharField('Фамилия', max_length=255, blank=True)
+
     class Meta:
         verbose_name = 'Пользователь'
         verbose_name_plural = 'Пользователи'
@@ -28,7 +30,7 @@ class RegistrationManager(models.Manager):
         return self.create(profile=user)
 
 
-class Profile(TimeStampedModel):
+class Profile(models.Model):
     user = models.OneToOneField(User, models.CASCADE, verbose_name='Пользователь', related_name='profile')
     birthday = models.DateField('Дата рождения', null=True, default=None)
 
