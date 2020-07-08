@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="section" id="about">
+    <div class="columns has-same-height is-gapless">
+        <div class="column is-4 is-offset-4">
+            <!-- Profile picture -->
+            <div class="card">
+                <div class="card-image">
+                    <figure class="image is-4by3">
+                        <img src="https://source.unsplash.com/random/1280x960" alt="Placeholder image">
+                    </figure>
+                </div>
+            </div>
+        </div>
+        <div class="column is-5 is-offset-5">
+            <div class="card">
+                <div class="card-content skills-content">
+                    <h3 class="title is-4">{{ product.title}}</h3>
+                    <div class="content">
+                        <table class="table-profile">
+                            <tr>
+                                <th colspan="1"></th>
+                                <th colspan="2"></th>
+                            </tr>
+                            <tr>
+                                <td>Метро:</td>
+                                <td>{{ product.metro}}</td>
+                            </tr>
+                            <tr>
+                                <td>Телефон:</td>
+                                <td>{{ product.phone_number}}</td>
+                            </tr>
+                            <tr>
+                                <td>Цена:</td>
+                                <td>{{ product.price}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content skills-content">
+                    <h3 class="title is-4">Описание</h3>
+                    <div class="content">
+                        <p>{{ product.description}} Здесь будет небольшое описание товара. Совсем маленькое, буквально 2-3 предложения.
+                            Lorem Ipsum Dolor Sit Amet. Зимние женские сапоги в отличном состоянии.
+                            Натуральная кожа, размер 39.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

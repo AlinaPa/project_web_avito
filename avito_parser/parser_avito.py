@@ -3,7 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 
 
-from products.models import Products
+from apps.product.models import Product
 
 
 def get_html(url):
@@ -16,8 +16,8 @@ def get_html(url):
 		return False
 
 
-def save_products(title, url, price, metro):
-	new_product = Products(title=title, url=url, price=price, metro=metro, created_at=datetime.datetime.now())
+def save_products(title, price, metro):
+	new_product = Product(title=title, price=price, metro=metro, created_at=datetime.datetime.now())
 	new_product.save()
 
 
@@ -30,10 +30,9 @@ def get_avito_ads():
 		result_ads = []
 		for ad in ads:
 			title = ad.find('div', class_='item_table-header').find('h3', class_="title").text.strip()
-			url = ad.find('a', class_='item-description-title-link')['href']
 			price = ad.find('span', class_='price').text.strip()
 			metro = ad.find('div', class_='data').find_all('p')[-1].text.strip()
-			save_products(title, url, price, metro)
+			save_products(title, price, metro)
 
 
 get_avito_ads()

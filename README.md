@@ -23,7 +23,7 @@
 
 6. Устанавливаем python пакеты
 
-        pip install -r requirements/pip.txt
+        pip install -r requirements.txt
         
 
 ## Настройка проекта
@@ -34,3 +34,11 @@
 2. Проводим миграции
 
         ./manage.py migrate
+
+## Bulma
+1. Установка
+
+        npm install bulma
+
+2. Документация [bulma v0.7.4](https://bulma.io/documentation/)
+        
