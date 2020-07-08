@@ -24,7 +24,7 @@ pip-log.txt
 
 # Sphinx documentation
 db.sqlite3
-node_modules
+/node_modules/
 /static/
 .idea
 .DS_Store
