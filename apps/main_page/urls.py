@@ -1,7 +1,7 @@
 from django.conf.urls import url
 
-from apps.main_page.views import ProductListView
+from apps.main_page.views import NewsListView
 
 urlpatterns = [
-    url(r'', ProductListView.as_view(), name='index'),
+    url(r'^$', NewsListView.as_view(), name='index'),
 ]

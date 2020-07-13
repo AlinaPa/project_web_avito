@@ -9,5 +9,6 @@ urlpatterns = [
     url(r'^admin/', include((site.get_urls(), 'admin'))),
     url(r'^product/', include(('apps.product.urls', 'product'))),
     url(r'', include(('apps.main_page.urls', 'main_page'))),
-] + static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS)
+] + static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS) + static(settings.MEDIA_URL,
+                                                                                  document_root=settings.MEDIA_ROOT)
 

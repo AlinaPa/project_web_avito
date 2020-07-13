@@ -1,38 +1,20 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="ru">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
-
+    <link href="{% static 'css/base.css' %}" rel="stylesheet">
     <title>AD</title>
-    <style>
-        body {
-            background: url(../static/main_page/body.png) center/cover fixed;
-            background-size: 100%;
-        }
-        .navbar-item {
-            color: white;
-            background-color: transparent;
-
-            border-bottom-color: transparent;
-        }
-        footer {
-          background: url(../static/main_page/footer.png);
-          background-size: 100%;
-        }
-
-    </style>
 </head>
 
 <body class="os x chrome chrome-chrome">
 <section class="hero is-fullheight">
-    <div class="hero-head">
-        <div class="container is-widescreen">
+        <div class="container">
             <nav class="navbar">
                 <div class="navbar-brand">
-                    <a class="navbar-item">
+                    <a class="navbar-item" href="{% url 'main_page:index' %}">
                         <span class="icon is-large" style="color: white">
                             <span class="fa-stack">
                                 <i class="fa fa-home fa-stack-2x"></i>
@@ -70,24 +52,22 @@
                     </div>
                 </div>
             </nav>
+        <div class="container">
+        {% block content %}{% endblock %}
         </div>
     </div>
-<div class="hero-body">
-    <div class="container">
-        {% block content %}{% endblock %}
-    </div>
-</div>
-<div class="hero-foot">
-        <footer class="footer">
-            <div class="content has-text-centered">
-                <div class="container is-desktop">
-                </div>
-            </div>
-        </footer>
-</div>
+</section>
 
 <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
-</section>
 </body>
+
+<footer class="footer">
+    <div class="container">
+        <div class="container is-desktop">
+        </div>
+    </div>
+</footer>
+
 </html>

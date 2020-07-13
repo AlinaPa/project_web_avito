@@ -1,21 +1,20 @@
-from django.db import models
+from django.db.models import Model, Manager, CharField, ImageField, DateTimeField
 
 
-class ProductManage(models.Manager):
+class ProductManage(Manager):
     def create_product(self, title):
-        product = self.create(title=title)
-        return product
+        return self.create(title=title)
 
 
-class Product(models.Model):
-    title = models.CharField('Название', max_length=100)
+class Product(Model):
+    title = CharField(verbose_name='Название', max_length=100)
     # Todo: поправить price на DecimalField после того как доработаем парсер
-    price = models.CharField('Цена', max_length=15, default=None)
-    description = models.CharField('Описание', max_length=300)
-    metro = models.CharField('Метро', max_length=300, blank=True)
-    phone_number = models.CharField('Телефон', max_length=11)
-    photo = models.ImageField('Фотография', null=True, default=None, upload_to='products')
-    created_at = models.DateTimeField('Дата создания', auto_now_add=True)
+    price = CharField(verbose_name='Цена', max_length=15, default=None)
+    description = CharField(verbose_name='Описание', max_length=300)
+    metro = CharField(verbose_name='Метро', max_length=300, blank=True)
+    phone_number = CharField(verbose_name='Телефон', max_length=11)
+    photo = ImageField(verbose_name='Фотография', null=True, default=None, upload_to='products')
+    created_at = DateTimeField(verbose_name='Дата создания', auto_now_add=True)
 
     objects = ProductManage()
 
