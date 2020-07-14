@@ -1,12 +1,12 @@
 from django.contrib.auth.models import AbstractUser
-from django.db import models
+from django.db.models import Model, OneToOneField, DateField, Manager, CharField, CASCADE
+from phonenumber_field.modelfields import PhoneNumberField
 from werkzeug.security import generate_password_hash, check_password_hash
+
+from apps.utils.models import TimestampedModel
 
 
 class User(AbstractUser):
-    first_name = models.CharField('Имя', max_length=255, blank=True)
-    last_name = models.CharField('Фамилия', max_length=255, blank=True)
-
     class Meta:
         verbose_name = 'Пользователь'
         verbose_name_plural = 'Пользователи'
@@ -25,14 +25,21 @@ class User(AbstractUser):
         return self.is_staff or self.is_superuser
 
 
-class RegistrationManager(models.Manager):
+class RegistrationManager(Manager):
     def create_profile(self, user: User):
         return self.create(profile=user)
 
 
-class Profile(models.Model):
-    user = models.OneToOneField(User, models.CASCADE, verbose_name='Пользователь', related_name='profile')
-    birthday = models.DateField('Дата рождения', null=True, default=None)
+class Profile(TimestampedModel):
+    user = OneToOneField(User, on_delete=CASCADE, verbose_name='Пользователь', related_name='profile')
+    first_name = CharField('Имя', max_length=255, null=True, blank=True)
+    last_name = CharField('Фамилия', max_length=255, null=True, blank=True)
+    birthday = DateField('Дата рождения', null=True, default=None)
+
+    department = CharField('Отдел', max_length=255, null=True, blank=True)
+    position = CharField('Должность', max_length=255, null=True, blank=True)
+    phone_number = PhoneNumberField('Телефон', null=True, blank=True)
+    telegram = CharField('Телеграм', max_length=255, null=True, blank=True)
 
     class Meta:
         verbose_name = 'Профиль'

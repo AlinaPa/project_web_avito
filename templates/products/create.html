@@ -20,9 +20,11 @@
                                 <div class="field">
                                     <label class="label has-text-left">Название объявления</label>
                                     <div class="control">
+                                      <label>
                                         <input name="title" type="text" placeholder="Название"
                                                {% if form.title.value %}value="{{ form.title.value }}"{% endif %}
                                                class="input">
+                                      </label>
                                     </div>
                                 </div>
                             </th>
@@ -30,9 +32,11 @@
                                 <div class="field">
                                     <label class="label has-text-left">Телефон</label>
                                     <div class="control">
+                                      <label>
                                         <input name="phone_number" type="text" placeholder="Укажите ваш номер"
                                                {% if form.phone_number.value %}value="{{ form.phone_number.value }}"{% endif %}
                                                class="input">
+                                      </label>
                                     </div>
                                 </div>
                             </th>
