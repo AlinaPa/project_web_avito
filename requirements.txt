@@ -15,7 +15,7 @@ django-model-utils==3.1.2
 django-phonenumber-field-4.0.0
 django-rest-swagger==2.2.0
 django-shell-plus==1.1.7
-djangorestframework==3.9.2
+djangorestframework==3.11.2
 djangorestframework-jsonapi==2.7.0
 djangorestframework-jwt==1.11.0
 djoser==1.5.1
